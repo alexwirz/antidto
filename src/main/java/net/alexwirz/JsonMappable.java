@@ -7,4 +7,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 @JsonSerialize(using = Serializer.class)
 public interface JsonMappable {
     ObjectNode mapAsJsonNode(ObjectNode objectNode, JsonNodeFactory jsonNodeFactory);
+
+    JsonMedia mapAsJson(JsonMedia jsonMedia);
 }

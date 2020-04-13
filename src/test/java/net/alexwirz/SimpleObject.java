@@ -25,6 +25,11 @@ public class SimpleObject implements JsonMappable {
     }
 
     @Override
+    public JsonMedia mapAsJson(JsonMedia jsonMedia) {
+        return null;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

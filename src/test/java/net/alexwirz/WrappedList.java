@@ -19,4 +19,9 @@ public class WrappedList implements JsonMappable {
         this.list.forEach(arrayNode::add);
         return objectNode;
     }
+
+    @Override
+    public JsonMedia mapAsJson(JsonMedia jsonMedia) {
+        return null;
+    }
 }

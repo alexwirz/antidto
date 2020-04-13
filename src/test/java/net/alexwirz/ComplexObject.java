@@ -18,4 +18,9 @@ public class ComplexObject implements JsonMappable {
         objectNode.set("embeddedObject", embeddedObject.mapAsJsonNode(jsonNodeFactory.objectNode(), jsonNodeFactory));
         return objectNode;
     }
+
+    @Override
+    public JsonMedia mapAsJson(JsonMedia jsonMedia) {
+        return null;
+    }
 }
