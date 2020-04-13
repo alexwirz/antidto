@@ -23,4 +23,11 @@ public class SerializationTest {
         var readValue = objectMapper.readValue(json, SimpleObject.class);
         assertThat(readValue).isEqualTo(testObject);
     }
+
+    @Test
+    void canSerializeComplexObject() throws JsonProcessingException {
+        var complexObject = new ComplexObject(42, new SimpleObject("one", 1));
+        var json = new ObjectMapper().writeValueAsString(complexObject);
+        assertThat(json).isEqualToIgnoringCase("{\"foo\":42,\"embeddedObject\":{\"foo\":\"one\",\"bar\":1}}");
+    }
 }

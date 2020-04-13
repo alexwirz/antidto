@@ -2,6 +2,7 @@ package net.alexwirz;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.Objects;
@@ -17,9 +18,10 @@ public class SimpleObject implements JsonMappable {
     }
 
     @Override
-    public void mapAsJsonNode(ObjectNode objectNode) {
+    public ObjectNode mapAsJsonNode(ObjectNode objectNode, JsonNodeFactory jsonNodeFactory) {
         objectNode.put("foo", foo);
         objectNode.put("bar", bar);
+        return objectNode;
     }
 
     @Override
