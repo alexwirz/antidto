@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
+import java.lang.ref.WeakReference;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SerializationTest {
@@ -29,5 +31,13 @@ public class SerializationTest {
         var complexObject = new ComplexObject(42, new SimpleObject("one", 1));
         var json = new ObjectMapper().writeValueAsString(complexObject);
         assertThat(json).isEqualToIgnoringCase("{\"foo\":42,\"embeddedObject\":{\"foo\":\"one\",\"bar\":1}}");
+    }
+
+    @Test
+    void canSerializeWrappedLists() throws JsonProcessingException {
+        var wrappedList = new WrappedList();
+        wrappedList.add("foo");
+        var json = new ObjectMapper().writeValueAsString(wrappedList);
+        assertThat(json).isEqualToIgnoringCase("{\"list\":[\"foo\"]}");
     }
 }
